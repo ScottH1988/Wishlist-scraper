@@ -19,8 +19,7 @@ item_discount = soup.find("span", id=re.compile("itemPriceDrop_")).get_text()
 
 print(item_title) 
 print(item_price)
-print(item_discount)
-    
+print(item_discount) 
 
 
 
