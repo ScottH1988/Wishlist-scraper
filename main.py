@@ -12,14 +12,30 @@ soup = BeautifulSoup(page.content, "html.parser")
 items = soup.find_all("h2", class_ = "a-size-base")
 
 #re.compile is a "regex" in case you forget
+item_titles = soup.find_all("a", id=re.compile("itemName_"))
+item_prices = soup.find_all(class_ = "a-offscreen")
+item_discounts = soup.find_all("span", id=re.compile("itemPriceDrop_"))
 
-item_title = soup.find("a", id=re.compile("itemName_")).get_text()
-item_price = soup.find(class_ = "a-offscreen").get_text()
-item_discount = soup.find("span", id=re.compile("itemPriceDrop_")).get_text()
 
-print(item_title) 
-print(item_price)
-print(item_discount) 
+for item_title in item_titles:
+    print(item_title.get_text()) 
+for item_price in item_prices:
+    print(item_price.get_text()) 
+for item_discount in item_discounts:
+    print(item_discount.get_text()) 
+
+
+
+
+"""
+#this will print to a text file
+   with open("items.txt", "a") as f:
+         print(item_title, item_price, item_discount, file=f) 
+"""
+    
+
+
+
 
 
 
